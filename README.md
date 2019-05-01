@@ -1,1 +1,1 @@
-# artificial-intelligence-aps
+# Artificial Intelligence - Atividades Práticas Supervisionadas
