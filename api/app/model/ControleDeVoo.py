@@ -1,4 +1,4 @@
-class ControleDeVoo:
+class ControleDeVoo(object):
 
     def __init__(self, altitude, pressao, temperatura, velocidade):
         if self.verifica_ternario(altitude):
@@ -10,13 +10,13 @@ class ControleDeVoo:
                         self.__pressao = pressao
                         self.__velocidade = velocidade
                     else:
-                        self.mensagen_erro('velocidade')
+                        self.mensagen_erro('Velocidade')
                 else:
-                    self.mensagen_erro('temperatura')
+                    self.mensagen_erro('Temperatura')
             else:
-                self.mensagen_erro('pressao')
+                self.mensagen_erro('Pressão')
         else:
-            self.mensagen_erro('altitude')
+            self.mensagen_erro('Altitude')
 
     def get_altitude(self):
         return self.__altitude
@@ -70,6 +70,6 @@ class ControleDeVoo:
             return False
 
     def mensagen_erro(self, variavel):
-        mensagen = variavel+' incorreta'
+        mensagen = variavel + ' incorreta! Favor inserir o dado correto!'
         print(mensagen)
         return False

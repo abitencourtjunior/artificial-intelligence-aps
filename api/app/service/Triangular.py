@@ -1,12 +1,12 @@
 import numpy as np
 
-from model.Medidas import Medidas
 
-class fuzzy:
+class Triangular(object):
 
     def __init__(self, valor, plano):
         self.__valor = valor
-        self.__plano = plano
+        if(len(plano) == 3):
+            self.__plano = plano
 
     def calcular_parametros(self):
         parametrox = (self.__valor - self.__plano[0]) / (self.__plano[1] - self.__plano[0])
@@ -17,8 +17,8 @@ class fuzzy:
         fuzzyficacao = np.max(np.min(self.calcular_parametros()),0)
         return fuzzyficacao
 
-
-parametros = Medidas()
-control_fuzzy = fuzzy(243.15, parametros.temperatura())
-print(control_fuzzy.funcao_tringular())
+# Testes de Funcionalidades
+# parametros = Medidas()
+# control_fuzzy = Triangular(290, parametros.temperatura())
+# print(control_fuzzy.funcao_tringular())
 
