@@ -1,5 +1,5 @@
 from flask import request, Blueprint, abort
-from ..service.Conversor import Conversor
+from ..services.Conversor import Conversor
 
 velocidade = Blueprint('Velocidade', __name__, url_prefix="/velocidade")
 

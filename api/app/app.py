@@ -1,8 +1,8 @@
 from flask import Flask
-from .views.Temperatura import temperatura
-from .views.Altitude import altitude
-from .views.Velocidade import velocidade
-from .views.Controle_de_voo import controle
+from .routes.Temperatura_route import temperatura
+from .routes.Altitude_route import altitude
+from .routes.Velocidade_route import velocidade
+from .routes.Controle_de_voo_route import controle
 
 app = Flask(__name__)
 
