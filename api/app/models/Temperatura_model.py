@@ -7,8 +7,8 @@ from services.Conversor import Conversor
 
 class Temperatura_Model(object):
 
-    def __init__(self, valor):
-        self.__valor = valor
+    def __init__(self, *args):
+        self.__valor = args[0]
         self.__taxa = 0
         self.__parametros = Medidas()
         self.__conversao = Conversor()
@@ -16,21 +16,21 @@ class Temperatura_Model(object):
     def calculo_fuzzy(self):
         self.__valor = self.__conversao.celcius_kelvin(self.__valor)
         calculo = Triangular(self.__valor, self.__parametros.temperatura())
-        self.__taxa = calculo.funcao_tringular()
+        self.__taxa = 100 *  calculo.funcao_tringular()
 
     def defuzzificacao_temperatura(self):
-        if(self.valor == 218 and self.taxa < 1):
+        if(self.valor == 218):
             return f'Temperatura de Vôo: {self.__conversao.kelvin_celcius(self.__valor)} °C - {self.taxa} %'
+        # Falta colocar mais validações no sistema.
 
     @property
     def taxa(self):
         return self.__taxa
 
-    @property
-    def valor(self):
+    def valor_atual(self):
         return self.__valor
 
-teste = Temperatura_Model(-55)
+teste = Temperatura_Model([-55])
 teste.calculo_fuzzy()
 print(teste.taxa)
 print(teste.valor)
