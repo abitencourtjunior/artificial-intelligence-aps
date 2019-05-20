@@ -14,14 +14,22 @@ class Temperatura_Model(object):
         self.__conversao = Conversor()
 
     def calculo_fuzzy(self):
-        self.__valor = self.__conversao.celcius_kelvin(self.__valor)
         calculo = Triangular(self.__valor, self.__parametros.temperatura())
-        self.__taxa = 100 *  calculo.funcao_tringular()
+        self.__taxa = calculo.funcao_tringular()
 
     def defuzzificacao_temperatura(self):
-        if(self.__valor == 218):
-            return f'Temperatura de Vôo: {self.__conversao.kelvin_celcius(self.__valor)} °C - {self.taxa} %'
-        # Falta colocar mais validações no sistema.
+        if(self.__taxa <= 0.8 and self.__valor < 25):
+            return f' Era do Gelo {self.__taxa}'
+        elif (self.__taxa > 0.1 and self.__taxa <= 0.3 and self.__valor > 25 and self.__valor <= 270):
+            return f' Muito frio {self.__taxa}'
+        elif (self.__taxa > 0.3 and self.__taxa <= 0.5 and self.__valor > 25 and self.__valor <= 270):
+            return f' Frio {self.__taxa}'
+        elif (self.__taxa > 0.5 and self.__taxa <= 0.85 and self.__valor > 280 and self.__valor <= 300):
+            return f' Normal {self.__taxa}'
+        elif (self.__taxa > 0.7 and self.__taxa <= 0.9 and self.__valor > 300):
+            return f' Temperatura Alta {self.__taxa}'
+        else:
+            return f' Ta pegando fogo bicho {self.__taxa}'
 
     @property
     def taxa(self):
@@ -29,9 +37,3 @@ class Temperatura_Model(object):
 
     def valor_atual(self):
         return self.__valor
-
-teste = Temperatura_Model(-55)
-teste.calculo_fuzzy()
-print(teste.taxa)
-print(teste.valor_atual())
-print(teste.defuzzificacao_temperatura())
