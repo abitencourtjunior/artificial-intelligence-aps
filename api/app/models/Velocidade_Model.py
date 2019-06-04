@@ -12,3 +12,15 @@ class VelocidadeModel(object):
         self.__velocidade_percentual = 0
         self.__medida = Medidas()
         self.__conversao = Conversor()
+
+    def calculo_fuzzy(self):
+        calculo = Triangular(self.__velocidade_atual, self.__medida.velocidade())
+        self.__velocidade_percentual = calculo.funcao_tringular()
+
+    @property
+    def velocidade_taxa(self):
+        return self.__velocidade_percentual
+
+teste = VelocidadeModel(50)
+teste.calculo_fuzzy()
+print(teste.velocidade_taxa)

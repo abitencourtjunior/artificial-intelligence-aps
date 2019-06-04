@@ -51,8 +51,3 @@ class AltitudeModel(object):
     def altitude_taxa(self):
         return self.__altitude_percentual
 
-teste = AltitudeModel(14000)
-teste.calculo_fuzzy()
-print(teste.altitude_taxa)
-print(teste.defuzzifucacao_altitude())
-
