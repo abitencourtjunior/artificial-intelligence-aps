@@ -14,4 +14,5 @@ class PressaoModel(object):
         self.__conversao = Conversor()
 
     def calculo_fuzzy(self):
-        pass
+        calculo = Triangular(self.__pressao_atual, [0, 0.5, 1])
+        self.__pressao_percentual = calculo.funcao_tringular()

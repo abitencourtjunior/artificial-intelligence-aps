@@ -1,6 +1,5 @@
 import numpy as np
 
-
 class Triangular(object):
 
     def __init__(self, valor, plano):
@@ -18,7 +17,6 @@ class Triangular(object):
         return fuzzyficacao
 
 # Testes de Funcionalidades
-# parametros = Medidas()
-# control_fuzzy = Triangular(290, parametros.temperatura())
+# control_fuzzy = Triangular(290, [1,2,3])
 # print(control_fuzzy.funcao_tringular())
 
