@@ -5,7 +5,7 @@ from services.Triangular import Triangular
 from services.Medidas import Medidas
 from services.Conversor import Conversor
 
-class Temperatura_Model(object):
+class TemperaturaModel(object):
 
     def __init__(self, valor=None):
         self.__valor = valor

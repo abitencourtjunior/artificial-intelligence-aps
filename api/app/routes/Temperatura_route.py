@@ -6,7 +6,7 @@ temperatura = Blueprint('Temperatura', __name__, url_prefix="/temperatura")
 
 @temperatura.route('/', methods=['GET'])
 def index():
-    return 'Teste'
+    return 'API - Temperatura'
 
 @temperatura.route('/fuzzy', methods=['POST'])
 def calcular_temperatura():

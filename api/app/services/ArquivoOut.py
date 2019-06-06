@@ -25,6 +25,7 @@ class ArquivoOut(object):
                 arquivo.close()
             else:
                 pass
+
         elif self.__saida == "terminal":
             print(saida)
         else:

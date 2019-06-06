@@ -4,7 +4,7 @@ sys.path.append("..")
 from services.Triangular import Triangular
 from services.Medidas import Medidas
 from services.Conversor import Conversor
-from models.Temperatura_model import Temperatura_Model
+from api.app.models.Temperatura_model import TemperaturaModel
 
 class AltitudeModel(object):
 
@@ -13,7 +13,7 @@ class AltitudeModel(object):
         self.__altitude_percentual = 0
         self.__medida = Medidas()
         self.__conversao = Conversor()
-        self.__temperatura = Temperatura_Model(self.__calcula_temperatura_real())
+        self.__temperatura = TemperaturaModel(self.__calcula_temperatura_real())
 
     def __calcula_temperatura_real(self):
         temperatura = ((self.__altitude_atual * 0.3048) * -2)
@@ -47,6 +47,7 @@ class AltitudeModel(object):
             return f'Altitude muito alta, cuidado: {self.__altitude_percentual}'
         elif (self.__altitude_atual > 10000):
             return f'Você realmente está muito alto, saiba o que está fazendo, cuidado: {self.__altitude_percentual}'
+
     @property
     def altitude_taxa(self):
         return self.__altitude_percentual

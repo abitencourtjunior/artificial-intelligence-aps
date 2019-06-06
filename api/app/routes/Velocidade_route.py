@@ -5,5 +5,5 @@ velocidade = Blueprint('Velocidade', __name__, url_prefix="/velocidade")
 
 @velocidade.route('/', methods=['GET'])
 def index():
-    return 'Teste'
+    return 'Em manutenção - API - Velocidade Fuzzy'
 
