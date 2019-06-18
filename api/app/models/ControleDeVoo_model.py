@@ -29,6 +29,17 @@ class ControleDeVoo():
         parametros.append(altitude_model.altitude_taxa)
 
         return parametros
+        #temp, velocidade, pressao, altitude
+
+    def defuzificacao_controle(self):
+        defuzzy = self.fuzzificacao_controle()
+        if(defuzzy[0] > 0.8 and self.temperatura < 300 and defuzzy[3] < 0.8 and self.altitude >= 8000 and defuzzy[2] > 0.8 ):
+            return "Voo Normal - Suas condições são boas para voo"
+        elif (defuzzy[0] < 0.8 and self.temperatura <= 400 and defuzzy[3] <= 0.09 or self.altitude <= 1000 and defuzzy[2] > 0.4):
+            return "ATENÇÃO - Verifique a temperatura em que está a aeronave"
+        elif (defuzzy[0] < 0.8 and self.temperatura <= 400 and defuzzy[3] <= 0.3 or self.altitude >= 3000 and defuzzy[2] > 0.8 ):
+            return "Alerta - Aeronave Caindo - Suas condições de voo não são boas"
+
 
 
     @property
@@ -44,5 +55,7 @@ class ControleDeVoo():
         return self.__temperatura
 
 
-teste = ControleDeVoo(8000, 380, 278)
-teste.fuzzificacao_controle()
+#temp, velocidade, pressao, altitude
+teste = ControleDeVoo(900, 380, 350)
+print(teste.fuzzificacao_controle())
+print(teste.defuzificacao_controle())
